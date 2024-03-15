@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import { FaRegBookmark } from "react-icons/fa";
+
 
 const Blog = ({ blog }) => {
   const { title, cover, author, author_img, posted_date, reading_time, hashtags } = blog;
@@ -25,8 +27,9 @@ const Blog = ({ blog }) => {
 
         </div>
 
-        <div className='p-3 text-gray-600'>
-          <p>{reading_time} min read</p>
+        <div className='p-3 text-gray-600 flex items-center '>
+          <p>{reading_time} min read </p>
+          <button><FaRegBookmark className='m-2' /></button>
         </div>
 
       </div>
@@ -36,10 +39,13 @@ const Blog = ({ blog }) => {
       </div>
 
       <div className='flex'>
-
-        <p className=' p-3 text-gray-600'>{hashtags[0]}</p>
-        <p className=' p-3 text-gray-600'>{hashtags[1]}</p>
-        <p className=' p-3 text-gray-600'>{hashtags[2]}</p>
+        {
+          hashtags.map((hash, idx) => <span
+            key={idx}
+            className=' p-3 text-gray-600'
+          ><a href="">{hash}</a>
+          </span>)
+        }
       </div>
 
     </div>
